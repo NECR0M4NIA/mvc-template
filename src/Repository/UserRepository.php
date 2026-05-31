@@ -13,6 +13,12 @@ class UserRepository extends Database {
 
     }
 
+    public function findByEmail(string $email): ?array {
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+        return $stmt->fetch();
+    }
+
     public function update() {
 
     }
